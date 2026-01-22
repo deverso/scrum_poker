@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrum Poker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Tela de entrada -->
+        <div id="entry-screen" class="screen active">
+            <h1>🎴 Scrum Poker</h1>
+            <div class="entry-form">
+                <input type="text" id="user-name" placeholder="Seu nome" maxlength="20">
+                <input type="text" id="room-id" placeholder="ID da Sala" maxlength="20">
+                <button id="join-btn">Entrar na Sala</button>
+                <button id="create-btn">Criar Nova Sala</button>
+            </div>
+        </div>
+
+        <!-- Tela principal do jogo -->
+        <div id="game-screen" class="screen">
+            <header>
+                <div class="room-info">
+                    <span>Sala: <strong id="current-room-id"></strong></span>
+                    <span>Você: <strong id="current-user-name"></strong></span>
+                </div>
+                <button id="leave-btn">Sair</button>
+            </header>
+
+            <div class="game-content">
+                <!-- Área da história -->
+                <div class="story-section">
+                    <h2>História Atual</h2>
+                    <div id="story-display" class="story-display">
+                        <p>Nenhuma história definida</p>
+                    </div>
+                    <div class="story-input">
+                        <input type="text" id="story-input" placeholder="Digite a descrição da história...">
+                        <button id="set-story-btn">Definir História</button>
+                    </div>
+                </div>
+
+                <!-- Área de votação -->
+                <div class="voting-section">
+                    <h2>Selecione sua estimativa</h2>
+                    <div id="cards-container" class="cards-container">
+                        <!-- Cartas serão inseridas aqui via JavaScript -->
+                    </div>
+                    <div id="vote-status" class="vote-status"></div>
+                </div>
+
+                <!-- Área de participantes -->
+                <div class="participants-section">
+                    <h2>Participantes (<span id="participants-count">0</span>)</h2>
+                    <div id="participants-list" class="participants-list">
+                        <!-- Lista de participantes será inserida aqui -->
+                    </div>
+                </div>
+
+                <!-- Controles do moderador -->
+                <div class="controls-section">
+                    <button id="reveal-btn" class="btn-primary" disabled>Revelar Votos</button>
+                    <button id="reset-btn" class="btn-secondary" disabled>Nova Votação</button>
+                </div>
+
+                <!-- Área de resultados -->
+                <div id="results-section" class="results-section hidden">
+                    <h2>Resultados</h2>
+                    <div id="results-display" class="results-display">
+                        <!-- Resultados serão inseridos aqui -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
